@@ -1,6 +1,7 @@
+
 # LUIS FERNANDO SEGOBIA TORRES 2177528
 # A 24/08/2025
-# ESTE PROGRAMA RESUELVE EL SISTEMA DE ECUACIONOES NO LINEALES VISTOS EN CLASE
+# ESTE PROGRAMA RESUELVE EL SISTEMA DE ECUACIONES NO LINEALES VISTO EN CLASE
 
 import os
 import math
@@ -15,16 +16,16 @@ def print_registro(x_i, y_i, x_iPlus, y_iPlus, x_error, y_error):
     print(f"{format(x_i)} | {format(y_i)} | {format(x_iPlus)} | {format(y_iPlus)} | {format(x_error)} | {format(y_error)}")
 
 def fx_plus(x_i, y_i) -> float:
-    return x_i - (f_u(x_i,y_i)*(3*y_i**2-3*x_i) - f_v(x_i,y_i)*(math.exp(y_i) - x_i)) / ((math.cos(x_i)-y_i)*(3*y_i**2-3*x_i) - (math.exp(y_i)-x_i)*(2*x_i-3*y_i))
+    return x_i - (f_u(x_i,y_i)*(1+6*x_i*y_i) - f_v(x_i,y_i)*x_i) / ((2*x_i+y_i)*(1+6*x_i*y_i) - x_i*3*y_i**2)
 
 def fy_plus(x_i, y_i) -> float:
-    return y_i - (f_v(x_i,y_i)*(math.cos(x_i)-y_i)-f_u(x_i,y_i)*(2*x_i-3*y_i)) / ((math.cos(x_i)-y_i)*(3*y_i**2-3*x_i) - (math.exp(y_i)-x_i)*(2*x_i-3*y_i))
+    return y_i - (f_v(x_i,y_i)*(2*x_i+y_i)-f_u(x_i,y_i)*(3*y_i**2)) / ((2*x_i+y_i)*(1+6*x_i*y_i) - x_i*3*y_i**2)
 
 def f_u(x:float, y:float) -> float:
-    return math.sin(x)+math.exp(y)-x*y-5
+    return x**2 + x*y -10
 
 def f_v(x:float, y:float) -> float:
-    return x**2+y**3-3*x*y-7
+    return y + 3*x*y**2 - 57
 
 def fx_error(x_i, x_iPlus) ->float:
     return abs((x_iPlus - x_i ) / x_iPlus)
@@ -60,11 +61,11 @@ class Raices:
 
 cleaner()
 print('*** SISTEMA PARA SOLUCIONAR SISTEMA *** \n****** DE ECUACIONES NO LINEALES ******')
-print('Siendo u = sen(x) + e**y -xy = 5')
-print('Y v = x**2 + y**3 - 3xy = 7')
+print('Siendo u = x**2 + xy -10 = 0')
+print('Y v = y + 3xy**2 -57 = 0')
 print('Se utilizara el metodo de Newton-Raphson')
 
-print('En el sistema existen 3 soluciones, dentro del cuadrante 1,2 y 4')
+print('En el sistema existen 2 soluciones, dentro del cuadrante 1 y 4')
 x = float(input('Introduzca el x inicial x_0: '))
 y = float(input('Introduzca el y inicial y_0: '))
 print(f'\nSe utilizara como x_0 = {x} y y_0 = {y}')
@@ -73,6 +74,5 @@ raiz_1 = Raices(x,y)
 res_x, res_y = raiz_1.print_table()
 print(f"\nLa primer solucion del sistema de ecuaciones no lineales son con x =  {round(res_x, 5)} y y = {round(res_y, 5)}")
 
-print("\nPrograma realizado por Luis Fernando Segobia Torres 2177528 a 23/08/2025")
-
+print("\nPrograma realizado por Luis Fernando Segobia Torres 2177528 a 25/08/2025")
 
